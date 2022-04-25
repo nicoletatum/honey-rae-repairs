@@ -1,34 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
+import { CustomerList } from "./customers/CustomerList"
+import { EmployeeList } from "./employees/EmployeeList"
 
 export const Repairs = () => {
-    const [customers, updatedCustomers] = useState([])
-
-    useEffect(
-    //^basically an event listener
-        () => {
-            fetch("http://localhost:8088/customers")
-                .then(res => res.json())
-                //set to js
-                .then((customerArray) => { 
-                    updatedCustomers(customerArray)
-                    //customers have been pulled from API and are now set in customer array
-                })
-        },
-        [] 
-    )
-
     return (
         <>
         <h1>Honey Rae's Repair Shop</h1>
-
-        {
-            customers.map(
-                (customerObject) => {
-                    return <h2>{customerObject.name}</h2>
-                    return <h2>{customerObject.address}</h2>
-                }
-            )
-        }
+        <h2>Customer List</h2>
+        <CustomerList />
+        <h2> Employee List</h2>
+        <EmployeeList />
         </>
     )
 }
